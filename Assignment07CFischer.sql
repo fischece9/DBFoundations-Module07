@@ -450,7 +450,7 @@ AS
 Select Top 10000
 	ProductName, 
 	MonthYear, 
-	[Count],
+	[InventoryCount] = [Count],
 	PreviousMonthCount, 
 	[CountvsPreviousCountKPI] = IsNull(Case
 		When [COUNT] > [PreviousMonthCount] Then 1
@@ -480,6 +480,7 @@ AS
 Return Select 
 	ProductName, 
 	[InventoryDate] = MonthYear, 
+	InventoryCount,
 	[PreviousMonthCount], 
 	[CountvsPreviousCountKPI]
 From vProductInventoriesWithPreviousMonthCountsWithKPIs
